@@ -1,0 +1,72 @@
+<form class="inscription-form" [formGroup]="registerForm" (ngSubmit)="register()">
+
+    <div class="form-group">
+        <label for="name">Nom</label><input type="text" id="name" formControlName="name" class="form-control"
+            [class.is-invalid]="registerForm.get('name')?.invalid && registerForm.get('name')?.touched">
+        <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="invalid-feedback">
+            Le nom est requis
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" formControlName="email" class="form-control"
+            [class.is-invalid]="registerForm.get('email')?.invalid && registerForm.get('email')?.touched">
+        <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="invalid-feedback">
+            <div *ngIf="registerForm.get('email')?.errors?.['required']">L'email est requis</div>
+            <div *ngIf="registerForm.get('email')?.errors?.['email']">Format d'email invalide</div>
+        </div>
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" formControlName="password" class="form-control"
+            [class.is-invalid]="registerForm.get('password')?.invalid && registerForm.get('password')?.touched">
+        <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched"
+            class="invalid-feedback">
+            Le mot de passe est requis
+        </div>
+    </div>
+    <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+    </div>
+    <button type="submit" class="btn inscrire btn-primary" [disabled]="registerForm.invalid || isLoading">
+        {{ isLoading ? 'Inscription...' : 'S\'inscrire' }}
+    </button>
+
+
+</form>
+<div *ngIf="currentView === 'verify'" class="verify-form">
+    <h2>Vérification d'email</h2>
+
+    <div *ngIf="successMessage" class="alert alert-success">
+        {{ successMessage }}
+    </div>
+
+    <p>Un code de vérification a été envoyé à <strong>{{ userEmail }}</strong>. Veuillez le saisir ci-dessous.</p>
+
+    <form [formGroup]="verifyForm" (ngSubmit)="verifyEmail()">
+        <div class="form-group">
+            <label for="otp">Code de vérification</label>
+            <input type="text" id="otp" formControlName="otp" class="form-control"
+                placeholder="Saisissez le code à 6 chiffres" maxlength="6"
+                [class.is-invalid]="verifyForm.get('otp')?.invalid && verifyForm.get('otp')?.touched">
+            <div *ngIf="verifyForm.get('otp')?.invalid && verifyForm.get('otp')?.touched" class="invalid-feedback">
+                Veuillez saisir un code de vérification valide (6 chiffres)
+            </div>
+        </div>
+
+    div *ngIf="errorMessage" class="alert alert-danger">
+    {{ errorMessage }}
+
+    
+    <button type="submit" class="btn inscrire btn-primary" [disabled]="registerForm.invalid || isLoading">
+        {{ isLoading ? 'Inscription...' : 'S\'inscrire' }}
+    </button>
+    <button type="button" class="btn btn-primary retour" (click)="switchToLogin()" [disabled]="isLoading">
+        Retour à la connexion
+    </button>
+    
+    
+
+    </form>
