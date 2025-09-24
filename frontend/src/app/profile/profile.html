@@ -1,0 +1,82 @@
+<div class="profile-container">
+  <div class="profile-card">
+    <div class="profile-header">
+      <h2>Profil Utilisateur</h2>
+    </div>
+
+    <div class="profile-content" *ngIf="user">
+      <!-- Mode affichage -->
+      <div *ngIf="!isEditing" class="profile-view">
+        <div class="profile-field">
+          <label>Nom :</label>
+          <span class="profile-value">{{ user.name }}</span>
+        </div>
+        
+        <div class="profile-field">
+          <label>Email :</label>
+          <span class="profile-value">{{ user.email }}</span>
+        </div>
+
+        <button 
+          class="edit-btn"
+          (click)="toggleEdit()">
+          Modifier le profil
+        </button>
+      </div>
+
+      <!-- Mode édition -->
+      <form 
+        *ngIf="isEditing" 
+        [formGroup]="profileForm" 
+        class="profile-edit"
+        (ngSubmit)="saveProfile()">
+        
+        <div class="form-group">
+          <label for="name">Nom :</label>
+          <input 
+            id="name"
+            type="text" 
+            formControlName="name"
+            class="form-control"
+            [class.error]="profileForm.get('name')?.invalid && profileForm.get('name')?.touched">
+          
+          <div *ngIf="profileForm.get('name')?.invalid && profileForm.get('name')?.touched" 
+               class="error-message">
+            Le nom est requis (min. 2 caractères)
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email :</label>
+          <input 
+            id="email"
+            type="email" 
+            formControlName="email"
+            class="form-control"
+            [class.error]="profileForm.get('email')?.invalid && profileForm.get('email')?.touched">
+          
+          <div *ngIf="profileForm.get('email')?.invalid && profileForm.get('email')?.touched" 
+               class="error-message">
+            Email invalide
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button 
+            type="submit" 
+            class="save-btn"
+            [disabled]="profileForm.invalid">
+            Enregistrer
+          </button>
+          
+          <button 
+            type="button" 
+            class="cancel-btn"
+            (click)="cancelEdit()">
+            Annuler
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
