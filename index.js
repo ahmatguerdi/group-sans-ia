@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const usersRouter = require("./routers/usersRouter")
 const post_routes = require("./routers/postsRoute");
 const like_routes = require("./routers/likesRoute");
 
@@ -20,6 +21,8 @@ mongoose
   });
 
   app.use(express.json());
+  app.use("/api/auth",usersRouter);
+  
   app.use('/api/auth', authRoutes);
   app.listen(PORT, () => {
     console.log(`Serveur est démarré sur le http://localhost: ${PORT}`);

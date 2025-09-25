@@ -1,3 +1,24 @@
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+    "username": "hounaida",
+    "email": "hounaidaalibilal057@gmail.com",
+    "password": "123456"
+}
+
+###
+PATCH http://localhost:3000/api/auth/verify
+Content-Type: application/json
+
+{
+  "otp": 7814935,
+  "otpToken": "31616c6c-4899-4ee2-9610-4e0ec6accef0",
+  "purpose": "verify email"
+}
+
+###
+
 POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
