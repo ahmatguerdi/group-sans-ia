@@ -1,6 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const usersRouter = require("./routers/usersRouter")
 const app = express();
 const PORT = process.env.PORT;
 
@@ -14,7 +15,8 @@ mongoose
   });
 
   app.use(express.json());
-//   app.use('/api/auth', authRoutes);
+  app.use("/api/auth",usersRouter);
+  
   app.listen(PORT, () => {
     console.log(`Serveur est démarré sur le http://localhost: ${PORT}`);
     
