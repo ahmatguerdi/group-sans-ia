@@ -1,0 +1,34 @@
+POST http://localhost:3000/api/posts
+Content-Type: application/json
+
+{
+    "text": "Bonjour momage",
+    "user_id": 1
+}
+
+###
+
+GET http://localhost:3000/api/posts
+
+###
+
+DELETE http://localhost:3000/api/posts/0
+
+###
+
+PATCH http://localhost:3000/api/posts/0
+Content-Type: application/json
+
+{
+    "text": "Good morning",
+    "user_id": 0
+}
+
+###
+
+POST  http://localhost:3000/api/likes/1
+
+###
+
+DELETE http://localhost:3000/api/likes/1
+
