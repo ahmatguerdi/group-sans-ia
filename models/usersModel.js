@@ -14,11 +14,13 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       minlength: 6,
-      required: true,
+      required: true
     },
     isVerified:{
         type: Boolean,
         default: false
+    },
+    
     }
   },
   {

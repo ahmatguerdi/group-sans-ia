@@ -8,6 +8,8 @@ require("dotenv").config();
 const app = express();
 const PORT = process.env.PORT;
 
+const authRoutes = require("./routers/userRoute")
+
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => {
@@ -17,10 +19,11 @@ mongoose
     console.error("Erreur de connexion!:", error);
   });
 
-app.listen(PORT, () => {
-  console.log(`Serveur est démarré sur le http://localhost: ${PORT}`);
-});
-
-app.use(express.json());
+  app.use(express.json());
+  app.use('/api/auth', authRoutes);
+  app.listen(PORT, () => {
+    console.log(`Serveur est démarré sur le http://localhost: ${PORT}`);
+    
+  })
 app.use("/api/posts", post_routes);
 app.use("/api/likes", like_routes);
