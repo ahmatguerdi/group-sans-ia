@@ -12,8 +12,8 @@ PATCH http://localhost:3000/api/auth/verify
 Content-Type: application/json
 
 {
-  "otp": 7814935,
-  "otpToken": "31616c6c-4899-4ee2-9610-4e0ec6accef0",
+  "otp": 405400,
+  "otpToken": "e75413b3-27b5-481f-a717-15ec23300807",
   "purpose": "verify email"
 }
 
@@ -23,8 +23,8 @@ POST http://localhost:3000/api/auth/login
 Content-Type: application/json
 
 {
-    "email": "thalaadam14@gmail.com",
-    "password": "1234"
+    "email": "hounaidaalibilal057@gmail.com",
+    "password": "123456"
 }
 
 ###
@@ -32,14 +32,14 @@ post http://localhost:3000/api/auth/fortgotPassword
 Content-Type: application/json
 
 {
-    "email": "thalaadam14@gmail.com"
+    "email": "hounaidaalibilal057@gmail.com"
 }
 ###
-post htpp://localhost:3000/api/auth/restPassword
+post http://localhost:3000/api/auth/restPassword
 Content-Type: application/json
 
 {
-    "otp": 11111,
-    "otpToken": "",
+    "otp": 2375804,
+    "otpToken": "50c98f5b-510a-49ec-927f-c2aa6c52afb0",
     "newPassword": "1234567"
 }
