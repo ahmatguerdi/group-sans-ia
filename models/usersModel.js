@@ -15,20 +15,15 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       minlength: 6,
-      //required: true,
+
+      required: true
     },
     isVerified:{
         type: Boolean,
         default:false
     },
-    created_at: {
-        type: Date,
-        default: Date.now
-    },
-    updated_at: {
-        type: Date,
-        default: Date.now
-    },
+    
+    }
   },
   {
     timestamps: true,

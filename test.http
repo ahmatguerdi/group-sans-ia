@@ -16,3 +16,30 @@ Content-Type: application/json
   "otpToken": "31616c6c-4899-4ee2-9610-4e0ec6accef0",
   "purpose": "verify email"
 }
+
+###
+
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+    "email": "thalaadam14@gmail.com",
+    "password": "1234"
+}
+
+###
+post http://localhost:3000/api/auth/fortgotPassword
+Content-Type: application/json
+
+{
+    "email": "thalaadam14@gmail.com"
+}
+###
+post htpp://localhost:3000/api/auth/restPassword
+Content-Type: application/json
+
+{
+    "otp": 11111,
+    "otpToken": "",
+    "newPassword": "1234567"
+}
