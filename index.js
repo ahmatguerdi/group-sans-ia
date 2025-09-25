@@ -1,6 +1,10 @@
-require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const post_routes = require("./routers/postsRoute");
+const like_routes = require("./routers/likesRoute");
+
+require("dotenv").config();
+
 const app = express();
 const PORT = process.env.PORT;
 
@@ -13,9 +17,10 @@ mongoose
     console.error("Erreur de connexion!:", error);
   });
 
-  app.use(express.json());
-//   app.use('/api/auth', authRoutes);
-  app.listen(PORT, () => {
-    console.log(`Serveur est démarré sur le http://localhost: ${PORT}`);
-    
-  })
+app.listen(PORT, () => {
+  console.log(`Serveur est démarré sur le http://localhost: ${PORT}`);
+});
+
+app.use(express.json());
+app.use("/api/posts", post_routes);
+app.use("/api/likes", like_routes);

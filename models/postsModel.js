@@ -6,16 +6,8 @@ const postSchema = new mongoose.Schema(
       required: true,
     },
     user_id: {
-      type: String,
+      type: Number,
       required: true,
-    },
-    created_at: {
-        type: Date,
-        default: Date.now
-    },
-    updated_at: {
-        type: Date,
-        default: Date.now
     }
   },
   {
